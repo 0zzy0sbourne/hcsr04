@@ -14,7 +14,7 @@ struct UltrasonicSensor {
     uint32_t rising_timestamp; 
     bool new_distance_available;  
 
-    UltrasonicSensor(PinName trig_pin, PinName echo_pin) {
+    UltrasonicSensor(PinName trig_pin, PinName echo_pin) 
         : trig(trig_pin), echo(echo_pin), echo_timer() {
         distance = 0.0f;
         duration = 0.0f;
@@ -34,13 +34,13 @@ public:
     ); 
     void setup(); 
     void update(); 
-    void publish_distance(float); 
+    void publish_distance(int); 
 
 private: 
     static const int publishRate = 10;
     static const int thresholdCm = 40;
 
-    void echo_rising();
+    void echo_rising(PinName sender);
     void echo_falling(UltrasonicSensor* sensor); 
     float microseconds_to_cm(float microseconds);
 
@@ -52,6 +52,6 @@ private:
     float threshold;
     int publish_rate;
     ros::Time last_publish_time;
-}
+}; 
 
 #endif  // ULTRASONIC_NODE_H_
