@@ -8,14 +8,18 @@
 struct UltrasonicSensor {
     DigitalOut trig;
     InterruptIn echo; 
-    Timer timer; 
+    Timer echo_timer; 
     float duration; 
     float distance;
     uint32_t rising_timestamp; 
     bool new_distance_available;  
 
     UltrasonicSensor(PinName trig_pin, PinName echo_pin) {
-        
+        : trig(trig_pin), echo(echo_pin), echo_timer() {
+        distance = 0.0f;
+        duration = 0.0f;
+        new_distance_available = false;
+        rising_timestamp = 0;
     }
 }
 
