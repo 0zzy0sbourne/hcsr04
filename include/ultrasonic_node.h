@@ -13,6 +13,10 @@ struct UltrasonicSensor {
     float distance;
     uint32_t rising_timestamp; 
     bool new_distance_available;  
+
+    UltrasonicSensor(PinName trig_pin, PinName echo_pin) {
+        
+    }
 }
 
 class UltrasonicNode {

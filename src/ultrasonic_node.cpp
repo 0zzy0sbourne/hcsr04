@@ -36,7 +36,6 @@ void UltrasonicNode::setup() {
     }
 }
 
-
 void UltrasonicNode::update() {
     node_handler.spinOnce();
 
@@ -55,7 +54,6 @@ void UltrasonicNode::update() {
     }
 }
 
-void UltrasonicNode::publish_distane(float distance) {
-    distance_msg.data = distance; 
-    distance_publisher.publish(&distance_msg); 
+void UltrasonicNode::echo_rising() {
+    
 }
